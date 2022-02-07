@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 14
+Implementation-Title: Tracker
+Implementation-Version: 0.0.1-SNAPSHOT
+Main-Class: com.example.Tracker.TrackerApplication
+Created-By: Maven Integration for Eclipse
+

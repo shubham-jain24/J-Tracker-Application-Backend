@@ -1,0 +1,100 @@
+
+type Query{
+	message: String
+	tickets: [Ticket]
+	userStory: [UserStory]
+	userStoryByID(id: String!): UserStory
+	ticketById(id: String!): Ticket
+	userStoryByFilter(ownerName: String, assignedName: String, status: String): [UserStory]
+
+}
+
+type Ticket{
+	ticketId: String
+	ticketType: String
+	ticketDescription: String
+	ticketOwner: String
+	ticketTitle: String
+	ticketCreationDate: String
+	ticketTargetCompletionDate: String
+	ticketCompletionDate: String
+	Comments: [Comments]
+	userStories: [UserStory]
+}
+
+type UserStory{
+	userStoryId: String
+	epicId: String
+	userStoryTitle: String
+	userStoryDescription: String
+	userStoryAcceptanceCriteria: String
+	userStoryOwner: String
+	userStoryAssigned: String
+	userStoryStatus: String
+	userStoryStartDate: String
+	userStoryCompletionDate: String
+	userStoryExpectedCompletionDate: String
+	userStoryEffort: Int
+	userStoryCompletedEffort: Int
+	userStoryRemainingEffort: Int
+	Comments: [Comments]
+}
+
+type Result{
+	statusCode: Int!
+	statusMessage: String!
+}
+
+type Comments{
+	commentId: String
+	sourceId: String
+	commentDescription: String
+	commentCreationDate: String
+	commentEditDate: String
+}
+	
+
+type Mutation {
+	addTicket(ticketType: String! ticketDescription: String! ticketOwner: String! ticketTitle: String! ticketCreationDate: String!
+	ticketTargetCompletionDate: String! ticketCompletionDate: String!): Result!
+	
+	updateTicket(ticketId: String! ticketType: String! ticketDescription: String! ticketOwner: String! ticketTitle: String! ticketCreationDate: String!
+	ticketTargetCompletionDate: String! ticketCompletionDate: String!): Result!
+	
+	deleteTicketById(ticketId: String): Result!
+	
+	addComment(sourceId: String!, commentDescription: String!, commentCreationDate: String!, commentEditDate: String!): String!
+	addUserStory(
+	epicId: String!
+	userStoryTitle: String!
+	userStoryDescription: String!
+	userStoryAcceptanceCriteria: String!
+	userStoryOwner: String!
+	userStoryAssigned: String!
+	userStoryStatus: String!
+	userStoryEffort: Int!
+	userStoryStartDate:String!
+	userStoryCompletionDate: String!
+	userStoryExpectedCompletionDate: String!
+	userStoryCompletedEffort: Int
+	userStoryRemainingEffort: Int): Result!
+	
+	updateUserStory(
+	userStoryId: String!
+	epicId: String!
+	userStoryTitle: String!
+	userStoryDescription: String!
+	userStoryAcceptanceCriteria: String!
+	userStoryOwner: String!
+	userStoryAssigned: String!
+	userStoryStatus: String!
+	userStoryEffort: Int!
+	userStoryStartDate:String!
+	userStoryCompletionDate: String!
+	userStoryExpectedCompletionDate: String!
+	userStoryCompletedEffort: Int
+	userStoryRemainingEffort: Int): Result!
+	
+	
+	deleteUserStory(userStoryId: String!):Result!
+}
